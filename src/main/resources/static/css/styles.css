@@ -1,0 +1,16 @@
+.image-gallery {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.image-gallery img {
+    display: none;
+    max-width: 40%;
+    max-height: 40%;
+}
+
+.image-gallery img.active {
+    display: block;
+}

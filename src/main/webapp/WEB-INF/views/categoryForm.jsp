@@ -16,7 +16,7 @@
   <input type="checkbox" id="active" name="active" ${category.active ? 'checked' : ''}>
 
   <input type="hidden" name="id" value="${category.id}">
-
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
   <button type="submit">Zapisz</button>
 </form>
 </body>

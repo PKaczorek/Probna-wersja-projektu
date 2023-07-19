@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 
 <head>
@@ -69,10 +68,7 @@
 <body>
 <div class="container">
     <div class="sidebar">
-        <sec:authorize access="hasRole('ADMIN')">
-        <h4> <a href="/categories"> Edycja produktów</a> </h4>
-        </sec:authorize>
-        <h3> Kategorie Produktów</h3>
+        <h3> <a href="/categories"> Kategorie produktów</a> </h3>
         <div class="categories">
             <c:forEach items="${categories}" var="category">
                 <a href="/categories/${category.id}">${category.name}</a>
@@ -89,17 +85,45 @@
             <a href="/info">O Nas</a>
             <a href="/statute">Regulamin</a>
             <a href="/contact">Kontakt</a>
-            <sec:authorize access="!isAuthenticated()">
-                <a href="${pageContext.request.contextPath}/login">Zaloguj się</a>
-            </sec:authorize>
+
         </div>
         <div class="dashboard">
-            <h2>Witaj na stronie głównej!</h2>
+            <h2>Zamówienie</h2>
         </div>
-        <p>Funkcje ktore trzeba poprawic w projekcie:</p>
-        <p>-wysylanie maili przez przegladarke</p>
-
-        <img src="Pepe-hands.png" alt="Pepe hands">
+        <form method="POST" action="/sendEmail">
+            <div>
+                <label for="comment">Treść zamówienia:</label><br>
+                <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
+            </div>
+            <div>
+                <label for="email">Adres e-mail:</label><br>
+                <input type="email" id="email" name="email">
+            </div>
+            <div>
+                <input type="submit" value="Wyślij">
+            </div>
+        </form>
+        <button class="back-button" onclick="window.location.href='/';">Powrót do strony głównej</button>
+    </div>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+        .title {
+            font-weight: bold;
+            width: 30%;
+        }
+        .info {
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
     </div>
 </div>
 </body>

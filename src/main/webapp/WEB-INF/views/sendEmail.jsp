@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 
 <head>
@@ -61,22 +60,18 @@
             color: blue;
         }
 
-        .dashboard {
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="sidebar">
-        <sec:authorize access="hasRole('ADMIN')">
-        <h4> <a href="/categories"> Edycja produktów</a> </h4>
-        </sec:authorize>
-        <h3> Kategorie Produktów</h3>
+        <h3> <a href="/categories"> Kategorie produktów</a> </h3>
         <div class="categories">
-            <c:forEach items="${categories}" var="category">
-                <a href="/categories/${category.id}">${category.name}</a>
-            </c:forEach>
+            <a href="/categories/1">Kurtki</a>
+            <a href="/categories/2">Sukienki</a>
+            <a href="/categories/3">Torebki</a>
+            <a href="/categories/4">Koszulki</a>
+            <a href="/categories/5">Spodnie</a>
         </div>
     </div>
     <div class="content">
@@ -89,17 +84,10 @@
             <a href="/info">O Nas</a>
             <a href="/statute">Regulamin</a>
             <a href="/contact">Kontakt</a>
-            <sec:authorize access="!isAuthenticated()">
-                <a href="${pageContext.request.contextPath}/login">Zaloguj się</a>
-            </sec:authorize>
         </div>
-        <div class="dashboard">
-            <h2>Witaj na stronie głównej!</h2>
-        </div>
-        <p>Funkcje ktore trzeba poprawic w projekcie:</p>
-        <p>-wysylanie maili przez przegladarke</p>
-
-        <img src="Pepe-hands.png" alt="Pepe hands">
+        <p> Email został wysłany</p>
+        <button class="back-button" onclick="window.location.href='/';">Powrót do strony głównej</button>
+    </div>
     </div>
 </div>
 </body>

@@ -13,5 +13,13 @@
     <div><input type="submit" value="Sign In"/></div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
+<c:if test="${param.error != null}">
+    <p style="color: red;">Wrong username or password.</p>
+</c:if>
+<script>
+    if (window.location.search.includes("success")) {
+        window.location.href = "/";
+    }
+</script>
 </body>
 </html>

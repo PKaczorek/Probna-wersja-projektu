@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 
 <head>
@@ -69,10 +68,7 @@
 <body>
 <div class="container">
     <div class="sidebar">
-        <sec:authorize access="hasRole('ADMIN')">
-        <h4> <a href="/categories"> Edycja produktów</a> </h4>
-        </sec:authorize>
-        <h3> Kategorie Produktów</h3>
+        <h3> <a href="/categories"> Kategorie produktów</a> </h3>
         <div class="categories">
             <c:forEach items="${categories}" var="category">
                 <a href="/categories/${category.id}">${category.name}</a>
@@ -89,18 +85,56 @@
             <a href="/info">O Nas</a>
             <a href="/statute">Regulamin</a>
             <a href="/contact">Kontakt</a>
-            <sec:authorize access="!isAuthenticated()">
-                <a href="${pageContext.request.contextPath}/login">Zaloguj się</a>
-            </sec:authorize>
         </div>
         <div class="dashboard">
-            <h2>Witaj na stronie głównej!</h2>
+            <h2>Dane Kontaktowe</h2>
         </div>
-        <p>Funkcje ktore trzeba poprawic w projekcie:</p>
-        <p>-wysylanie maili przez przegladarke</p>
+        <table>
+            <tr>
+                <td class="title">Kontakt telefoniczny:</td>
+                <td class="data">tel. 123456789</td>
+                <td colspan="2" class="info">(od poniedziałku do piątku, w godzinach 8:00-16:00)</td>
+            </tr>
+            <tr>
+                <td class="title">Kontakt mailowy:</td>
+                <td class="data">mania-zszywania@gmail.com</td>
+            </tr>
+            <tr>
+                <td class="title">Facebook:</td>
+                <td class="data"><a href="https://www.facebook.com/profile.php?id=100090302913495">Facebook - Mania Zszywania</a></td>
+            </tr>
+            <tr>
+                <td class="title">Vinted:</td>
+                <td class="data"><a href="https://www.vinted.pl/member/145130629-maniazszywania?fbclid=IwAR1eL_Mgr8556tF5YilZejbR6lLlgvSf7hxKO4lEMod7lFMCPW2jbtZ-mFI">Vinted - Mania Zszywania</a></td>
+            </tr>
+        </table>
+        <button class="back-button" onclick="window.location.href='/';">Powrót do strony głównej</button>
 
-        <img src="Pepe-hands.png" alt="Pepe hands">
+    </div>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .title {
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .info {
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
     </div>
 </div>
+
 </body>
 </html>

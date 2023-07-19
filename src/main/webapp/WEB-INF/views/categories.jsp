@@ -15,7 +15,7 @@
     <th>Aktywna</th>
     <th>Akcje</th>
   </tr>
-  <c:forEach items="${category}" var="category">
+  <c:forEach items="${categories}" var="category">
     <tr>
       <td>${category.id}</td>
       <td>${category.name}</td>

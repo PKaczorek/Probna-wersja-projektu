@@ -1,6 +1,8 @@
 package pl.coderslab.Product;
 
 import javax.persistence.*;
+import java.util.List;
+
 
 @Entity
 @Table(name = "products")
@@ -13,6 +15,17 @@ public class Product {
     private String productName;
     private double price;
     private boolean active;
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
+    @ManyToMany
+    private List<Image> images;
 
     public Long getId() {
         return id;
